@@ -5,7 +5,7 @@
 """
 
 
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+def index_range(page: int, page_size: int) -> tuple:
     """
     return a tuple (start, end)
     """
