@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-0. Simple helper function 
+0. Simple helper function
 """
 
 
