@@ -7,7 +7,7 @@ BaseCaching = __import__("base_caching").BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """BasicCache class"""
+    """FIFOCache class"""
 
     def __init__(self):
         """Constructor"""
@@ -17,7 +17,7 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """Add an item in the cache"""
         if key is not None and item is not None:
-            if len(self.cache_data) != 4 or key in self.cache_data.keys():
+            if len(self.cache_data) < self.MAX_ITEMS or key in self.cache_data.keys():
                 self.cache_data[key] = item
             else:
                 if self._next_discarded_key_index + 1 < self.MAX_ITEMS:
