@@ -23,13 +23,13 @@ class LFUCache(BaseCaching):
                 if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                     lfu = self._lfu_keys.pop(0)
                     del self.cache_data[lfu]
-                    print("DISCARD: {}".format(lfu))
+                    print(f"DISCARD: {lfu}")
                 self.cache_data[key] = item
             self._lfu_keys.append(key)
+
     def get(self, key):
         """Get an item by key"""
         if key is not None and key in self.cache_data:
             self._lfu_keys.pop(self._lfu_keys.index(key))
             self._lfu_keys.append(key)
-            return self.cache_data[key]
-        return None
+        return self.cache_data.get(key, None)
