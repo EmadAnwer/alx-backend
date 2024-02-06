@@ -22,16 +22,11 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 
-def get_locale():
-    """Get locale from request"""
-    return request.accept_languages.best_match(app.config["LANGUAGES"])
-
-
 babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str | None:
     """Get locale from request"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
