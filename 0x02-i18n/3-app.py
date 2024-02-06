@@ -23,6 +23,7 @@ app.config.from_object(Config)
 
 
 def get_locale():
+    """Get locale from request"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
@@ -39,9 +40,11 @@ def get_locale():
 def hello_world() -> str:
     """Return a simple string as our response"""
     return render_template(
-        "3-index.html", home_title=_("home_title"), home_header=_("home_header")
+        "3-index.html", home_title=_("home_title"),
+        home_header=_("home_header")
     )
 
 
 if __name__ == "__main__":
+    """Main"""
     app.run()
